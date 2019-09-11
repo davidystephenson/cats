@@ -1,36 +1,20 @@
 import React, { Component } from 'react'
-import request from 'superagent'
+import Images from './components/Images'
 
 class App extends Component {
-  state = { image: '' }
-
-  componentDidMount () {
-    this.getImage()
-  }
-
-  getImage () {
-    request
-      .get('https://api.thecatapi.com/v1/images/search')
-      .then(response => {
-        const { body } = response
-
-        console.log('body test:', body)
-
-        const cat = body[0]
-
-        console.log('cat test:', cat)
-
-        const { url } = cat
-
-        console.log('url test:', url)
-
-        this.setState({ image: url })
-      })
-  }
+  state = { show: false }
 
   render () {
+    console.log('App state test:', this.state)
+
     return <div>
-      <img src={this.state.image} />
+      <button onClick={
+        () => this.setState({ show: true })
+      }>
+        Show
+      </button>
+
+      {this.state.show && <Images />}
     </div>
   }
 }
