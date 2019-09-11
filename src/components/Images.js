@@ -20,11 +20,16 @@ class Images extends React.Component {
         const { url } = cat
 
         const images = [
-          ...this.state.images, url
+          url, ...this.state.images
         ]
 
         this.setState({ images })
+        // this.setState({ images: images })
       })
+  }
+
+  onClick = () => {
+    this.getImage()
   }
 
   render () {
@@ -40,6 +45,10 @@ class Images extends React.Component {
       />)
 
     return <div>
+      <button onClick={this.onClick}>
+        Add
+      </button>
+
       {images}
     </div>
   }

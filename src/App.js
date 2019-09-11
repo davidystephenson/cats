@@ -4,14 +4,18 @@ import Images from './components/Images'
 class App extends Component {
   state = { show: false }
 
+  onClick = () => {
+    const toggled = !this.state.show
+
+    this.setState({ show: toggled })
+  }
+
   render () {
     console.log('App state test:', this.state)
 
     return <div>
-      <button onClick={
-        () => this.setState({ show: true })
-      }>
-        Show
+      <button onClick={this.onClick}>
+        Toggle
       </button>
 
       {this.state.show && <Images />}
