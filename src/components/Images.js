@@ -2,7 +2,7 @@ import React from 'react'
 import request from 'superagent'
 
 class Images extends React.Component {
-  state = { image: '' }
+  state = { images: [] }
 
   componentDidMount () {
     console.log('Images mount test')
@@ -15,25 +15,32 @@ class Images extends React.Component {
       .then(response => {
         const { body } = response
 
-        console.log('body test:', body)
-
         const cat = body[0]
-
-        console.log('cat test:', cat)
 
         const { url } = cat
 
-        console.log('url test:', url)
+        const images = [
+          ...this.state.images, url
+        ]
 
-        this.setState({ image: url })
+        this.setState({ images })
       })
   }
 
   render () {
-    console.log('Images render test')
+    console.log('\nImages render test\n')
+
+    const images = this
+      .state
+      .images
+      .map(image => <img
+        key={image}
+        src={image}
+        alt='cat'
+      />)
 
     return <div>
-      <img src={this.state.image} alt='cat' />
+      {images}
     </div>
   }
 }
