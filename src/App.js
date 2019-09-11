@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import request from 'superagent'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class App extends Component {
+  state = { image: '' }
+
+  componentDidMount () {
+    this.getImage()
+  }
+
+  getImage () {
+    request
+      .get('https://api.thecatapi.com/v1/images/search')
+      .then(response => {
+        const { body } = response
+
+        console.log('body test:', body)
+
+        const cat = body[0]
+
+        console.log('cat test:', cat)
+
+        const { url } = cat
+
+        console.log('url test:', url)
+
+        this.setState({ image: url })
+      })
+  }
+
+  render () {
+    return <div>
+      <img src={this.state.image} />
     </div>
-  );
+  }
 }
 
-export default App;
+export default App
