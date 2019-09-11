@@ -29,14 +29,15 @@ class ImagesContainer extends React.Component {
       })
   }
 
-  onClick = () => {
+  onClick = (message) => {
+    console.log('message test:', message)
     this.getImage()
   }
 
   render () {
     return <Images
       cats={this.state.images}
-      handler={this.onClick}
+      handler={() => this.onClick('hello')}
     />
   }
 }
