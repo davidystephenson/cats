@@ -6,7 +6,6 @@ class ImagesContainer extends React.Component {
   state = { images: [] }
 
   componentDidMount () {
-    console.log('Images mount test')
     this.getImage()
   }
 
@@ -15,8 +14,6 @@ class ImagesContainer extends React.Component {
       .get('https://api.thecatapi.com/v1/images/search')
       .then(response => {
         const { body } = response
-
-        console.log('body test:', body)
 
         const cat = body[0]
 
@@ -30,7 +27,6 @@ class ImagesContainer extends React.Component {
   }
 
   onClick = (message) => {
-    console.log('message test:', message)
     this.getImage()
   }
 

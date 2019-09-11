@@ -11,8 +11,6 @@ class App extends Component {
   }
 
   render () {
-    console.log('App state test:', this.state)
-
     return <div>
       <button onClick={this.onClick}>
         Toggle

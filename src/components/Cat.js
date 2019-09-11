@@ -1,11 +1,7 @@
 import React from 'react'
 
 export default function Cat (props) {
-  console.log('props test:', props)
-
   const { anImageOfACat: cat } = props
-
-  console.log('cat test:', cat)
 
   const { height, id, url, width } = cat
 
