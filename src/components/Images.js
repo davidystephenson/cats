@@ -1,5 +1,6 @@
 import React from 'react'
 import request from 'superagent'
+import Cat from './Cat'
 
 class Images extends React.Component {
   state = { images: [] }
@@ -15,12 +16,12 @@ class Images extends React.Component {
       .then(response => {
         const { body } = response
 
+        console.log('body test:', body)
+
         const cat = body[0]
 
-        const { url } = cat
-
         const images = [
-          url, ...this.state.images
+          cat, ...this.state.images
         ]
 
         this.setState({ images })
@@ -38,10 +39,9 @@ class Images extends React.Component {
     const images = this
       .state
       .images
-      .map(image => <img
+      .map(image => <Cat
         key={image}
-        src={image}
-        alt='cat'
+        anImageOfACat={image}
       />)
 
     return <div>
