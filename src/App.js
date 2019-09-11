@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Images from './components/Images'
+import ImagesContainer from './components/ImagesContainer'
 
 class App extends Component {
   state = { show: false }
@@ -18,7 +18,7 @@ class App extends Component {
         Toggle
       </button>
 
-      {this.state.show && <Images />}
+      {this.state.show && <ImagesContainer />}
     </div>
   }
 }
